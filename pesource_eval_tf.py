@@ -1,6 +1,11 @@
 import streamlit as st
 import pandas as pd
 from transformers import pipeline  # Import Hugging Face pipeline
+import os
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Disable GPU
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"  # Suppress TensorFlow warnings
+
 
 # Initialize the Hugging Face sentiment-analysis pipeline
 classifier = pipeline("sentiment-analysis")

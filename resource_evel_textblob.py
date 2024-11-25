@@ -5,6 +5,13 @@ from transformers import pipeline  # Import Hugging Face pipeline
 # Upload Excel file
 st.header("HowAI’mDoing")
 
+# Sample file download
+sample_excel_url = "https://github.com/prasadmadhasi/prasadmadhasi/blob/main/performanceFeedback_sample_data_v1.0.xlsx"
+
+# Add download link for the sample Excel file
+st.subheader("Download Sample Excel File:")
+st.markdown(f"[Download Sample Excel](https://github.com/prasadmadhasi/prasadmadhasi/blob/main/performanceFeedback_sample_data_v1.0.xlsx)")
+
 with st.sidebar:
     st.title("Your Documents")
     file = st.file_uploader("Upload an Excel file and ask questions", type=["xlsx"])

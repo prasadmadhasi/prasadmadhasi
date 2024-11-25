@@ -45,7 +45,7 @@ if file is not None:
             'Cultivates Innovation', 'Ensures Accountability',
             'Manages Ambiguity', 'Manages Complexity',
             'Decision Quality', 'Professionalism and Attitude',
-            'CREATED_DATE_TIME'
+            'CREATED_DATE_TIME', 'self_feedback'
         ]
 
         if not all(col in df.columns for col in required_columns):
@@ -55,7 +55,7 @@ if file is not None:
             df['CREATED_DATE_TIME'] = pd.to_datetime(df['CREATED_DATE_TIME'], errors='coerce')
 
             # Get the name and optional year from user input
-            resource_input = st.text_input("Enter the email of the resource and optionally the year (e.g., vmadhasi@mycompany.com (or) vmadhasi@mycompany.com 2024")
+            resource_input = st.text_input("Enter the email of the resource and optionally the year (e.g., vmadhasi@mycompany.com or vmadhasi@mycompany.com 2024")
 
             # Extract the resource name and year from the input
             if resource_input:
@@ -75,6 +75,17 @@ if file is not None:
                 # If year is provided, filter by year
                 if year:
                     resource_data = resource_data[resource_data['CREATED_DATE_TIME'].dt.year == year]
+
+                # Add checkbox to include or exclude self_feedback in analysis
+                include_self_feedback = st.checkbox("Include Self Feedback", value=True)
+
+                # If checkbox is checked, include all rows
+                if include_self_feedback:
+                    # No additional filter for self_feedback
+                    resource_data = resource_data
+                else:
+                    # If checkbox is unchecked, exclude rows where self_feedback == 'Y'
+                    resource_data = resource_data[resource_data['self_feedback'] != 'Y']
 
                 # Check if data for the resource exists
                 if not resource_data.empty:

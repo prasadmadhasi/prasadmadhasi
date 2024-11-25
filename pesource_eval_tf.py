@@ -5,7 +5,8 @@ from concurrent.futures import ThreadPoolExecutor
 
 # Initialize Hugging Face pipelines
 classifier = pipeline("sentiment-analysis")  # Sentiment analysis model
-summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")  # Lightweight summarization model
+summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", framework="pt")
+
 
 # Helper function for sentiment analysis
 def analyze_sentiment(text):

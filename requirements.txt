@@ -2,3 +2,4 @@ streamlit
 transformers
 pandas
 numpy
+TensorFlow 2.0

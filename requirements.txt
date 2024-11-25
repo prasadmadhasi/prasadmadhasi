@@ -4,3 +4,4 @@ pandas
 numpy
 TensorFlow
 tf-keras
+openpyxl

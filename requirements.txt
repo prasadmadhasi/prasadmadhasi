@@ -3,3 +3,4 @@ transformers
 pandas
 numpy
 TensorFlow
+tf-keras
